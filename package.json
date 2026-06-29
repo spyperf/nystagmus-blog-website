@@ -9,9 +9,20 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tiptap/extension-code-block-lowlight": "^3.27.1",
+    "@tiptap/extension-image": "^3.27.1",
+    "@tiptap/react": "^3.27.1",
+    "@tiptap/starter-kit": "^3.27.1",
+    "gray-matter": "^4.0.3",
     "next": "16.2.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1",
+    "turndown": "^7.2.4",
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
