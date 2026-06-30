@@ -1,13 +1,21 @@
 ---
-title: "New Post 2"
-date: "2026-06-29"
+title: "Hardware Challenges"
+date: "2026-06-30"
 excerpt: "Post"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus cursus, ante in egestas vulputate, neque orci consequat turpis, blandit laoreet tortor elit non nisi. Sed tempus vel lacus ac posuere. Phasellus bibendum massa vitae tincidunt sodales. Maecenas eleifend eget risus in tempor. Ut neque nulla, facilisis ut ligula quis, condimentum efficitur velit. Donec sodales eget nulla vitae eleifend. In ac diam odio. Proin eget feugiat tellus. Duis mattis laoreet dictum. Nunc hendrerit lectus a leo lobortis, vitae consequat sem ultrices. Nullam luctus dictum ipsum vel faucibus. Pellentesque venenatis sagittis leo, venenatis tempor risus rutrum a.
+Hardware Component Analysis
 
-Fusce non mauris urna. Mauris condimentum hendrerit nisl vel condimentum. Phasellus ullamcorper dignissim bibendum. Suspendisse id odio aliquam lectus ultrices vulputate at ac lacus. Nunc venenatis tortor vitae faucibus eleifend. Aenean et mollis lectus. Etiam a consequat elit, quis sodales felis. Praesent auctor, ante ut lobortis bibendum, massa nibh dignissim ipsum, eget tempus turpis lectus in turpis. Integer feugiat in purus in luctus. Donec ut mollis mauris. Donec blandit auctor quam, in tincidunt leo auctor rutrum. Ut non hendrerit eros, vitae mollis lacus. Nullam consectetur felis nec orci convallis sagittis. Integer mollis, odio ut mollis vulputate, dui neque faucibus augue, in lacinia neque dolor ac purus. Pellentesque ultricies mollis tortor, non tincidunt ante. Sed tristique lectus pretium enim faucibus tristique non non urna.
+Initial Hardware Selection — Raspberry Pi Zero
+The Raspberry Pi Zero was initially considered as the primary processing unit due to its compact form factor. However, it was deemed insufficient for this application for two key reasons. First, its ARM Cortex-A53 CPU lacks the processing power required to run real-time computer vision operations using OpenCV at an acceptable frame rate. Second, its 512MB of RAM is inadequate for the program, which requires approximately 1GB to operate effectively. A solution to this problem could be the Raspberry Pi 5. It features an ARM Cortex-A76 CPU capable of handling the processing demands of the application, along with a 4GB RAM configuration that comfortably exceeds our memory requirements. However, its physical size presents a challenge, as it is too large to be integrated directly into a glasses frame.
 
-![](/uploads/d552b78f-71f8-451a-9f98-fc90fd32cc8c.png)
+Proposed Solutions for Size Constraints:
 
-Continue writing....
+Option 1 — External Processing Unit (Primary Prototype)
+The most practical near-term solution is to house the processing unit in a small enclosure clipped to the user&apos;s clothing. The unit would connect to the cameras mounted on the glasses frame via a thin wire, transmitting voltage signals to the liquid crystal cells. This approach allows development to proceed without custom hardware.
+
+Option 2 — Custom PCB (Secondary Prototype)
+If full integration into the glasses frame is required, a custom PCB could be designed to incorporate only the essential components, significantly reducing size and weight. This would be pursued as a second prototype once the primary model has been validated.
+
+Option 3 — Coral Dev Board Micro with C++ Migration
+If a custom PCB proves infeasible, the Coral Dev Board Micro could be explored as an alternative compact platform. However, since it does not support Python, this would require a full migration of the codebase from Python to C++, which represents a significant additional development effort.
