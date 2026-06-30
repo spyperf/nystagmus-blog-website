@@ -2,25 +2,241 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0a0a0a;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a0a0a;
+  border-radius: 8px;
+}
+
+@keyframes dyw-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dyw-spinrev {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes dyw-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes dyw-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* Scroll reveal */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.85s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.85s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Card hover lift */
+.dyw-card {
+  will-change: transform;
+}
+a:hover > .dyw-card {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 56px -30px rgba(10, 10, 10, 0.55);
+}
+
+/* Pill button hover (data-attribute driven) */
+.dyw-btn {
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+.dyw-btn-solid {
+  color: #fff;
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+}
+.dyw-btn-solid:hover {
+  background: #fff;
+  color: #0a0a0a;
+}
+.dyw-btn-ghost {
+  color: #0a0a0a;
+  background: transparent;
+  border: 1px solid #0a0a0a;
+}
+.dyw-btn-ghost:hover {
+  background: #0a0a0a;
+  color: #fff;
+}
+.dyw-btn-light {
+  color: #0a0a0a;
+  background: #fff;
+  border: 1px solid #fff;
+}
+.dyw-btn-light:hover {
+  background: transparent;
+  color: #fff;
+}
+
+/* Markdown prose for post pages */
+.dyw-prose {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #33333a;
+}
+.dyw-prose > *:first-child {
+  margin-top: 0;
+}
+.dyw-prose p {
+  margin: 0 0 26px;
+}
+.dyw-prose h1,
+.dyw-prose h2,
+.dyw-prose h3 {
+  font-family: var(--font-grotesk), sans-serif;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.dyw-prose h1 {
+  font-size: 34px;
+  margin: 48px 0 18px;
+}
+.dyw-prose h2 {
+  font-size: 28px;
+  margin: 42px 0 16px;
+}
+.dyw-prose h3 {
+  font-size: 22px;
+  margin: 34px 0 14px;
+}
+.dyw-prose a {
+  color: #0a0a0a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dyw-prose strong {
+  color: #0a0a0a;
+  font-weight: 700;
+}
+.dyw-prose ul,
+.dyw-prose ol {
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.dyw-prose li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+}
+.dyw-prose li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0a0a0a;
+}
+.dyw-prose code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.92em;
+  background: #f0f0f1;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.dyw-prose pre {
+  margin: 0 0 30px;
+  padding: 24px;
+  border-radius: 14px;
+  overflow: auto;
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+}
+.dyw-prose pre code {
+  font-family: var(--font-mono), monospace;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #e8e8ea;
+  background: transparent;
+  padding: 0;
+  white-space: pre;
+}
+.dyw-prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  margin: 8px 0 30px;
+}
+.dyw-prose blockquote {
+  margin: 0 0 28px;
+  padding: 4px 0 4px 22px;
+  border-left: 2px solid #0a0a0a;
+  color: #5a5a60;
+  font-style: italic;
+}
+.dyw-prose hr {
+  border: none;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  margin: 40px 0;
 }
