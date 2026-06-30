@@ -92,8 +92,7 @@ export default function Home() {
                   color: "#5a5a60",
                 }}
               >
-                A field journal from the edge of vision — building eye &amp; pupil tracking, and
-                learning to see the world on my own terms. Don&apos;t wait for permission.
+                Technology the world has never seen before. Endless possibilities await you.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
                 <Link
@@ -151,11 +150,11 @@ export default function Home() {
               fontWeight: 400,
             }}
           >
-            Building a pupil-tracking pipeline — Python, OpenCV, and stubborn curiosity — to
+            Building an advanced and innovative design to alleviate nystagmus, utilizing OpenCV, liquid crystals, and hardware components to
             understand how eyes that move differently can still navigate the world beautifully.{" "}
             <span style={{ color: "#9a9aa0" }}>
-              This blog is the open notebook: the wins, the dead ends, and the philosophy that keeps
-              it moving.
+              These blogs documents the wins, the dead ends, and the philosophy that keeps
+              this project moving.
             </span>
           </p>
         </Reveal>

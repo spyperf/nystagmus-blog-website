@@ -20,7 +20,7 @@ export default function Footer() {
           color: "#0a0a0a",
         }}
       >
-        UNTITLED — DREAM YOUR WAY
+        LCG — DREAM YOUR WAY
       </span>
       <span
         style={{
